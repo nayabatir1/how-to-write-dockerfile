@@ -1,0 +1,9 @@
+- Stage 1 uses `node:lts-alpine` as its base and uses builder as the stage name.
+- On line 5, we install python, make, and g++. The node-gyp tool requries these three packages to run.
+- On line 7, we set `/app` directory as the `WORKDIR`.
+- On line 9 and 10, we copy the `package.json` file to the `WORKDIR` and install dependencies
+- Stage 2 also uses node-lts:alpine as the base.
+- On line 16, we set the NODE_ENV environment variable to production. This is important for the API to run properly.
+- From line 18 to line 20, we set the default user to node, create the `/home/node/app` directory, and set that as the `WORKDIR`.
+- On line 22, we copy all the project files and on line 23 we copy the node_modules directory from the builder stage. This directory contains all the built dependencies necessary for running the application.
+- On line 25, we set the default command.
